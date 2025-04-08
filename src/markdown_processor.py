@@ -74,7 +74,7 @@ def block_to_quote(markdown: str) -> HTMLNode:
     lines = markdown.split("\n")
     result = ""
     for line in lines:
-        result += line[1:]
+        result += line[1:].lstrip()
     children = parse_children(result)
     return ParentNode("blockquote", children)
 
