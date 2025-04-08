@@ -127,7 +127,7 @@ def generate_page(from_path: str, template_path: str, dest_path: str, basepath: 
     title = extract_title(md_string)
     result = template_string.replace("{{ Title }}", title).replace("{{ Content }}", html)
     result = result.replace("href=\"/", f"href=\"{basepath}")
-    result = result.replace("src\"/", f"src=\"{basepath}")
+    result = result.replace("src=\"/", f"src=\"{basepath}")
 
     if not os.path.exists(os.path.dirname(dest_path)):
         os.makedirs(os.path.dirname(dest_path))

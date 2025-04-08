@@ -7,11 +7,14 @@ from markdown_processor import generate_pages_recursive
 logging.basicConfig(level=logging.INFO)
 
 def main() -> None:
-    basepath = sys.argv[1] if sys.argv is not None else "/"
+    if len(sys.argv) > 1:
+        basepath = sys.argv[1]
+    else:
+        basepath = "/"
     src = "./static"
-    dest = "./public"
+    dest = "./docs"
     copy_directory(src, dest)
-    generate_pages_recursive("./content/", "./template.html", "./docs/", basepath)
+    generate_pages_recursive("./content/", "./template.html", dest, basepath)
 
 if __name__ == "__main__":
     main()
